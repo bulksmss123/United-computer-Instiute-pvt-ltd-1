@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>United Computer Institute Pvt Ltd</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* header */
+    header {
+      background: #0b2a4a;
+      color: white;
+      padding: 20px 0;
+      border-bottom: 4px solid #f39c12;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .header-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .logo h1 i {
+      color: #f39c12;
+      margin-right: 8px;
+    }
+    .logo span {
+      font-size: 0.9rem;
+      font-weight: 300;
+      display: block;
+      color: #b0c9e0;
+      margin-top: 4px;
+    }
+
+    .contact-header {
+      text-align: right;
+    }
+    .contact-header i {
+      color: #f39c12;
+      margin-right: 6px;
+    }
+    .contact-header .phone {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .contact-header .email {
+      font-size: 0.95rem;
+      color: #d4e2f0;
+    }
+
+    /* navigation */
+    nav {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #e9eef3;
+    }
+    .nav-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 12px;
+      padding: 10px 0;
+    }
+    .nav-flex a {
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 40px;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-flex a:hover, .nav-flex a.active {
+      background: #0b2a4a;
+      color: white;
+    }
+    .nav-flex a i {
+      margin-right: 6px;
+    }
+
+    /* pages */
+    .page {
+      display: none;
+      padding: 40px 0 50px;
+    }
+    .page.active {
+      display: block;
+    }
+
+    .page-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: #0b2a4a;
+      border-left: 6px solid #f39c12;
+      padding-left: 18px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      border: 1px solid #eef2f6;
+      transition: 0.2s;
+    }
+    .card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+    }
+    .card i {
+      font-size: 2.4rem;
+      color: #f39c12;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin: 18px 0 10px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .address-block {
+      background: white;
+      border-radius: 24px;
+      padding: 24px 28px;
+      border: 1px solid #e9edf2;
+      margin: 30px 0;
+    }
+    .address-block i {
+      color: #f39c12;
+      width: 26px;
+    }
+
+    .map-placeholder {
+      background: #e6edf5;
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      color: #1e3a5f;
+      font-weight: 500;
+      margin: 20px 0;
+      border: 1px dashed #a0b9d0;
+    }
+
+    .legal-box {
+      background: white;
+      border-radius: 24px;
+      padding: 30px 32px;
+      border: 1px solid #e9edf2;
+      margin: 25px 0;
+    }
+    .legal-box h2 {
+      font-size: 1.8rem;
+      color: #0b2a4a;
+      margin-bottom: 14px;
+    }
+    .legal-box h3 {
+      margin: 24px 0 8px;
+      color: #1e3a5f;
+    }
+
+    hr {
+      margin: 30px 0;
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, #dce3ec, transparent);
+    }
+
+    .footer-copy {
+      background: #0b2a4a;
+      color: #d4e2f0;
+      padding: 28px 0;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.95rem;
+      border-top: 3px solid #f39c12;
+    }
+    .footer-copy a {
+      color: #f5c542;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    .footer-copy a:hover {
+      text-decoration: underline;
+    }
+    .footer-copy .social i {
+      font-size: 1.3rem;
+      margin: 0 8px;
+      color: #d4e2f0;
+      transition: 0.2s;
+    }
+    .footer-copy .social i:hover {
+      color: #f39c12;
+    }
+
+    @media (max-width: 700px) {
+      .header-flex {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-header {
+        text-align: center;
+        margin-top: 10px;
+      }
+      .nav-flex a {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container header-flex">
+      <div class="logo">
+        <h1><i class="fas fa-laptop-code"></i> United Computer</h1>
+        <span>Institute Pvt Ltd · Since 2012</span>
+      </div>
+      <div class="contact-header">
+        <div class="phone"><i class="fas fa-phone-alt"></i> 6909621546</div>
+        <div class="email"><i class="fas fa-envelope"></i> unitedcomputerinstitute1@gmail.com</div>
+        <div style="font-size:0.9rem; margin-top:4px;"><i class="fas fa-map-pin"></i> WP5G+MJ3, Police Colony, Dimapur</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-flex">
+      <a href="#" class="active" data-page="home"><i class="fas fa-home"></i> Home</a>
+      <a href="#" data-page="about"><i class="fas fa-info-circle"></i> About</a>
+      <a href="#" data-page="contact"><i class="fas fa-address-card"></i> Contact</a>
+      <a href="#" data-page="terms"><i class="fas fa-file-contract"></i> Terms</a>
+      <a href="#" data-page="privacy"><i class="fas fa-shield-alt"></i> Privacy</a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page active">
+      <h2 class="page-title"><i class="fas fa-graduation-cap" style="color:#f39c12;"></i> Welcome to United Computer Institute</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <h3>Expert Training</h3>
+          <p>Industry-led courses in programming, data science, and design. Hands-on projects.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-user-graduate"></i>
+          <h3>Placement Support</h3>
+          <p>Strong network with top companies. 90% placement rate in 2024.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock"></i>
+          <h3>Flexible Batches</h3>
+          <p>Weekend & evening classes for working professionals. Online & offline.</p>
+        </div>
+      </div>
+
+      <!-- image placeholder (professional) -->
+      <img src="https://placecats.com/1200/300?random=1" alt="Institute campus" class="feature-img" style="max-height:220px; width:100%; object-fit:cover; border-radius:24px; background: #d9e2ec;">
+      <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:center; background:white; border-radius:24px; padding:20px 28px; border:1px solid #eef2f6; margin:20px 0;">
+        <div style="flex:2; min-width:200px;">
+          <h3 style="color:#0b2a4a;"><i class="fas fa-map-marker-alt" style="color:#f39c12;"></i> Our Location</h3>
+          <p><i class="fas fa-location-dot" style="width:22px;"></i> WP5G+MJ3, Police Colony, Dimapur, Nagaland 797112</p>
+          <p><i class="fas fa-phone" style="width:22px;"></i> 6909621546</p>
+          <p><i class="fas fa-envelope" style="width:22px;"></i> unitedcomputerinstitute1@gmail.com</p>
+        </div>
+        <div style="flex:1; background:#eef4fa; padding:12px 20px; border-radius:40px; text-align:center;">
+          <i class="fas fa-arrow-right" style="color:#f39c12;"></i> <strong>Admissions open 2026</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="about" class="page">
+      <h2 class="page-title"><i class="fas fa-building"></i> About United Computer Institute</h2>
+      <div style="background:white; border-radius:24px; padding:30px; border:1px solid #eef2f6;">
+        <p style="font-size:1.1rem;">Founded in 2012, <strong>United Computer Institute Pvt Ltd</strong> has been a pioneer in IT education in Nagaland. We offer diploma, certification, and degree programs in computer science, web development, AI, and digital marketing.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:30px; margin:30px 0;">
+          <div><i class="fas fa-user-tie" style="color:#f39c12; font-size:2rem;"></i><br><strong>20+</strong> expert faculty</div>
+          <div><i class="fas fa-desktop" style="color:#f39c12; font-size:2rem;"></i><br><strong>8</strong> modern labs</div>
+          <div><i class="fas fa-book-open" style="color:#f39c12; font-size:2rem;"></i><br><strong>50+</strong> courses</div>
+        </div>
+        <img src="https://placecats.com/800/200?random=2" alt="About us" style="width:100%; border-radius:18px; margin:12px 0; border:1px solid #dce3ec;">
+        <p>Our mission is to bridge the gap between academics and industry. We are committed to delivering quality education with a focus on practical skills, innovation, and career readiness.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="page">
+      <h2 class="page-title"><i class="fas fa-address-book"></i> Contact Us</h2>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px;">
+        <div style="background:white; border-radius:24px; padding:28px; border:1px solid #eef2f6;">
+          <h3><i class="fas fa-store"></i> Institute Address</h3>
+          <p><i class="fas fa-map-pin" style="width:28px;"></i> WP5G+MJ3, Police Colony,<br> Dimapur, Nagaland 797112</p>
+          <p><i class="fas fa-phone-alt" style="width:28px;"></i> 6909621546</p>
+          <p><i class="fas fa-envelope" style="width:28px;"></i> unitedcomputerinstitute1@gmail.com</p>
+          <div class="map-placeholder"><i class="fas fa-map"></i> Google Map – Police Colony, Dimapur</div>
+        </div>
+        <div style="background:white; border-radius:24px; padding:28px; border:1px solid #eef2f6;">
+          <h3><i class="fas fa-clock"></i> Office Hours</h3>
+          <p><strong>Mon–Fri:</strong> 9:00 AM – 7:00 PM</p>
+          <p><strong>Saturday:</strong> 10:00 AM – 4:00 PM</p>
+          <p><strong>Sunday:</strong> Closed</p>
+          <hr>
+          <p><i class="fas fa-headset"></i> For queries, call or email us. We respond within 24 hours.</p>
+        </div>
+      </div>
+      <!-- contact image -->
+      <img src="https://placecats.com/1000/180?random=3" alt="contact" style="width:100%; border-radius:24px; margin-top:20px; border:1px solid #dce3ec;">
+    </section>
+
+    <!-- TERMS PAGE -->
+    <section id="terms" class="page">
+      <div class="legal-box">
+        <h2><i class="fas fa-file-contract" style="color:#f39c12;"></i> Terms and Conditions</h2>
+        <p><strong>Last updated:</strong> June 2026</p>
+        <h3>1. Acceptance of Terms</h3>
+        <p>By using our services, you agree to comply with these terms. If you do not agree, please do not use our services.</p>
+        <h3>2. Fee & Refund Policy</h3>
+        <p>Course fees are non-refundable after the first week of commencement. All payments must be made in full before course start.</p>
+        <h3>3. Code of Conduct</h3>
+        <p>Students are expected to maintain discipline and respect staff and peers. Any misconduct may lead to termination.</p>
+        <h3>4. Intellectual Property</h3>
+        <p>All course materials, logos, and content are the property of United Computer Institute Pvt Ltd.</p>
+        <p style="margin-top:16px;">For full terms, please contact the administration.</p>
+      </div>
+    </section>
+
+    <!-- PRIVACY PAGE -->
+    <section id="privacy" class="page">
+      <div class="legal-box">
+        <h2><i class="fas fa-shield-alt" style="color:#f39c12;"></i> Privacy Policy</h2>
+        <p><strong>Effective:</strong> June 2026</p>
+        <h3>Information We Collect</h3>
+        <p>We collect personal information such as name, email, phone number, and payment details only for enrollment and communication.</p>
+        <h3>How We Use Data</h3>
+        <p>Your data is used for course registration, academic updates, and institutional communication. We do not sell or share your data with third parties.</p>
+        <h3>Data Security</h3>
+        <p>We implement industry-standard security measures to protect your information.</p>
+        <h3>Cookies</h3>
+        <p>Our website uses cookies to enhance user experience. You can disable cookies in browser settings.</p>
+        <p style="margin-top:16px;">For any privacy concerns, email us at unitedcomputerinstitute1@gmail.com</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER / COPYRIGHT -->
+  <footer class="footer-copy">
+    <div class="container">
+      <div class="social">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-youtube"></i>
+        <i class="fab fa-linkedin"></i>
+      </div>
+      <p style="margin:12px 0 6px;">
+        <i class="far fa-copyright"></i> 2026 United Computer Institute Pvt Ltd · All rights reserved.
+      </p>
+      <p style="font-size:0.85rem; color:#a0bcd9;">
+        <i class="fas fa-map-pin"></i> WP5G+MJ3, Police Colony, Dimapur, Nagaland 797112 &nbsp;|&nbsp; 
+        <i class="fas fa-phone-alt"></i> 6909621546 &nbsp;|&nbsp; 
+        <i class="fas fa-envelope"></i> unitedcomputerinstitute1@gmail.com
+      </p>
+      <div style="margin-top:10px; font-size:0.8rem;">
+        <a href="#" data-page="privacy">Privacy Policy</a> · 
+        <a href="#" data-page="terms">Terms & Conditions</a> · 
+        <a href="#" data-page="about">About</a> · 
+        <a href="#" data-page="contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PAGE NAVIGATION SCRIPT -->
+  <script>
+    (function() {
+      const navLinks = document.querySelectorAll('.nav-flex a[data-page]');
+      const pages = {
+        home: document.getElementById('home'),
+        about: document.getElementById('about'),
+        contact: document.getElementById('contact'),
+        terms: document.getElementById('terms'),
+        privacy: document.getElementById('privacy')
+      };
+      // footer links also use data-page
+      const footerLinks = document.querySelectorAll('.footer-copy a[data-page]');
+
+      function showPage(pageId) {
+        // hide all pages
+        Object.values(pages).forEach(p => p.classList.remove('active'));
+        // show selected
+        if (pages[pageId]) pages[pageId].classList.add('active');
+        // update nav active class
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.dataset.page === pageId) link.classList.add('active');
+        });
+        // scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const page = this.dataset.page;
+          showPage(page);
+          // update url hash
+          history.pushState(null, '', '#' + page);
+        });
+      });
+
+      footerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const page = this.dataset.page;
+          showPage(page);
+          history.pushState(null, '', '#' + page);
+        });
+      });
+
+      // handle hash on load & back/forward
+      window.addEventListener('hashchange', function() {
+        const hash = window.location.hash.replace('#', '');
+        if (hash && pages[hash]) {
+          showPage(hash);
+        } else {
+          showPage('home');
+        }
+      });
+
+      // initial: if hash present, show that page, else home
+      const initHash = window.location.hash.replace('#', '');
+      if (initHash && pages[initHash]) {
+        showPage(initHash);
+      } else {
+        showPage('home');
+      }
+    })();
+  </script>
+</body>
+</html>
